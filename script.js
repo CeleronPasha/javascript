@@ -175,26 +175,122 @@
 
 // Обьекты урок
 
-var person = {
-    name: 'Vasya',
-    year: 1990,
-    family: ['Helena', 'Igor'],
-    cars: { 
-        year: 2010, 
-        model: 'Ford'
-    },
-    calculetAge: function() {
-        this.age = 2018 - this.year
-    }
+// var person = {
+//     name: 'Vasya',
+//     year: 1990,
+//     family: ['Helena', 'Igor'],
+//     cars: { 
+//         year: 2010, 
+//         model: 'Ford'
+//     },
+//     calculetAge: function() {
+//         this.age = 2018 - this.year
+//     }
+// }
+
+// console.log(person)
+// console.log(person.name)
+// console.log(person['year'])
+// var field = 'cars'
+// console.log(person[field])
+// console.log(person[field].year)
+// person.year=1993
+// console.log(person)
+// person.calculetAge()
+// console.log(person)
+
+// Урок Циклы
+
+var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+// numbers.push('Not a number')
+// numbers.push('New line')
+
+// for (var i = 0; i < numbers.length; i++) {
+//     if (numbers[i] % 2 ===0) { // Вывод четных елементов с массива i
+//         console.log(numbers[i])
+//     }
+// }
+
+// for (var i = 0; i < numbers.length; i++) {
+//     if (numbers[i] % 2 !==0) { // Вывод четных елементов с массива i 2й способ
+//         continue
+//     }
+//     console.log(numbers[i])
+// }
+
+// numbers.push('String')
+
+// for (var i = 0; i < numbers.length; i++) {
+//     if (typeof numbers[i] === 'string') { // остановит цикл break в моменте когда оно наткнется на строчное значение.  
+//         break
+//     }
+//     console.log(numbers[i])
+// }
+
+// DOM урок
+// var div = document.getElementById('playground')
+// var p = document.getElementsByClassName('text')
+// var h1 = document.getElementsByTagName('h1')
+// console.log(div)
+// console.log(p)
+// console.log(h1)
+
+// var div = document.querySelector('#playground')
+// var p = document.querySelectorAll('.text')
+// var h1 = document.querySelector('h1')
+// var input = document.querySelector('input')
+// console.log(input.value)
+// div.innerHTML=('<h2 style="color : red;">From JavaScript</h2>')
+// h1.textContent = ('Chenge from JS')
+// console.log(div.innerHTML)
+// console.log(p)
+// console.log(h1.textContent)
+
+// <!-- Урок атрибуты и классы-->
+
+//  var a = document.querySelector('a')
+//  var oldHref = a.getAttribute('href')
+//  a.setAttribute('href', 'https://www.ya.ru')
+//  a.setAttribute('title', 'Go To Yandex')
+//  a.textContent=('Yandex')
+//  console.log(a)
+
+//  var box1 = document.querySelector('#box1')
+//  var box2 = document.querySelector('#box2')
+
+//  box1.classList.add('red')
+// //  box2.classList.add('blue')
+ 
+//  var hasClass = box2.classList.contains('blue')
+//  console.log(hasClass)
+
+//  if (hasClass) {
+//     box2.classList.remove('blue')
+//  } else {
+//     box2.classList.add('blue')
+//  }
+
+// Создание событий
+
+var button = document.querySelector('button')
+var h1 = document.querySelector('h1')
+var input = document.querySelector('input')
+
+function buttonHandler() {
+    console.log('clicked!')
+    h1.textContent = input.value
 }
 
-console.log(person)
-console.log(person.name)
-console.log(person['year'])
-var field = 'cars'
-console.log(person[field])
-console.log(person[field].year)
-person.year=1993
-console.log(person)
-person.calculetAge()
-console.log(person)
+
+h1.addEventListener('mouseenter', function() {
+    this.style.color = 'red'
+    this.style.backgroundColor = 'green'
+})
+
+h1.addEventListener('mouseleave', function() {
+    this.style.color = 'black'
+    this.style.backgroundColor = 'transparent'
+})
+
+button.addEventListener('click', buttonHandler)
