@@ -273,24 +273,135 @@ var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 // Создание событий
 
-var button = document.querySelector('button')
-var h1 = document.querySelector('h1')
-var input = document.querySelector('input')
+// var button = document.querySelector('button')
+// var h1 = document.querySelector('h1')
+// var input = document.querySelector('input')
 
-function buttonHandler() {
-    console.log('clicked!')
-    h1.textContent = input.value
-}
+// function buttonHandler() {
+//     console.log('clicked!')
+//     h1.textContent = input.value
+// }
 
 
-h1.addEventListener('mouseenter', function() {
-    this.style.color = 'red'
-    this.style.backgroundColor = 'green'
+// h1.addEventListener('mouseenter', function() {
+//     this.style.color = 'red'
+//     this.style.backgroundColor = 'yellow'
+// })
+
+// h1.addEventListener('mouseleave', function() {
+//     this.style.color = 'black'
+//     this.style.backgroundColor = 'transparent'
+// })
+
+// button.addEventListener('click', buttonHandler)
+
+
+// Обьекты всплытия и погружения
+
+// var divs = document.querySelectorAll('div')
+// var link = document.querySelector('a')
+
+// for (var i = 0; i<divs.length; i++) {
+//     divs[i].addEventListener('click', function(event) {
+//         event.stopPropagation()
+//         console.log(this.getAttribute('id'))
+//     })
+// }
+
+// link.addEventListener('click', HandleLinkClick)
+
+// function HandleLinkClick(event) {
+//     event.preventDefault()
+
+//     var div = divs[0]
+   
+//     div.style.display = div.style.display === 'none'
+//     ? 'flex'
+//     : 'none'
+//     console.log (div.style.display)
+// }\
+
+// Делигированые собития
+
+//
+
+// for (var i=0; i<p.length; i++) {
+//   p[i].addEventListener('click', function(event) {
+//     event.target.style.color = 'blue'
+//   })
+// }
+
+// document.getElementById('wrapper').addEventListener('click', function(event) {
+//   var tagName = event.target.tagName.toLowerCase()
+//   if (tagName==='p') {
+//     event.target.style.color = 'red'
+//   }
+
+//   if (event.target.classList.contains('color')) {
+//     event.target.style.color = 'blue'
+//   }
+// })
+
+// Взаимодействие с пользователем
+
+document.getElementById('alert').addEventListener('click', function(){
+  alert('clicked')
 })
 
-h1.addEventListener('mouseleave', function() {
-    this.style.color = 'black'
-    this.style.backgroundColor = 'transparent'
+document.getElementById('confirm').addEventListener('click', function(){
+  var decision = confirm('clicked?')
+  if (decision) {
+    alert('clicked')
+  } else {
+    alert ('dont clicked')
+  }
 })
 
-button.addEventListener('click', buttonHandler)
+document.getElementById('prompt').addEventListener('click', function(){
+  var age = prompt('Введите свой возраст')
+  if (age >= 18) {
+    alert ( 'Вы совершеннолетний')
+  } else {
+    alert ('Вы не совершеннолетний')
+  }
+})
+
+// Методы массивов
+
+var str = '1,2,3,4,5,6,7,8'
+
+var array = str.split(',')
+console.log(str)
+console.log(array)
+console.log(array.join(';'))
+console.log(array.reverse)
+
+array.splice(3, 0, '23')
+console.log(array)
+
+var newArray = array.concat([1,2])
+console.log(newArray)
+
+var objArr = [
+  {name: 'Max', age: 27},
+  {name: 'Elena', age: 18},
+  {name: 'Viktor', age: 20}
+]
+console.log (objArr)
+
+var foundPerson = objArr.find(function(person) {
+  return person.age === 20
+})
+
+console.log(foundPerson)
+
+var oddArray = [1,2,3,4,5,6,7,8,9].filter(function(i){
+  return i % 2 !==0
+})
+
+console.log(oddArray)
+
+var numArray = array.map(function(i) {
+  return i * 2
+})
+console.log(numArray)
