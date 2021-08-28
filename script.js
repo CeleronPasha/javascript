@@ -344,64 +344,110 @@ var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 // Взаимодействие с пользователем
 
-document.getElementById('alert').addEventListener('click', function(){
-  alert('clicked')
-})
+// document.getElementById('alert').addEventListener('click', function(){
+//   alert('clicked')
+// })
 
-document.getElementById('confirm').addEventListener('click', function(){
-  var decision = confirm('clicked?')
-  if (decision) {
-    alert('clicked')
-  } else {
-    alert ('dont clicked')
-  }
-})
+// document.getElementById('confirm').addEventListener('click', function(){
+//   var decision = confirm('clicked?')
+//   if (decision) {
+//     alert('clicked')
+//   } else {
+//     alert ('dont clicked')
+//   }
+// })
 
-document.getElementById('prompt').addEventListener('click', function(){
-  var age = prompt('Введите свой возраст')
-  if (age >= 18) {
-    alert ( 'Вы совершеннолетний')
-  } else {
-    alert ('Вы не совершеннолетний')
-  }
-})
+// document.getElementById('prompt').addEventListener('click', function(){
+//   var age = prompt('Введите свой возраст')
+//   if (age >= 18) {
+//     alert ( 'Вы совершеннолетний')
+//   } else {
+//     alert ('Вы не совершеннолетний')
+//   }
+// })
 
 // Методы массивов
 
-var str = '1,2,3,4,5,6,7,8'
+// var str = '1,2,3,4,5,6,7,8'
 
-var array = str.split(',')
-console.log(str)
-console.log(array)
-console.log(array.join(';'))
-console.log(array.reverse)
+// var array = str.split(',')
+// console.log(str)
+// console.log(array)
+// console.log(array.join(';'))
+// console.log(array.reverse)
 
-array.splice(3, 0, '23')
-console.log(array)
+// array.splice(3, 0, '23')
+// console.log(array)
 
-var newArray = array.concat([1,2])
-console.log(newArray)
+// var newArray = array.concat([1,2])
+// console.log(newArray)
 
-var objArr = [
-  {name: 'Max', age: 27},
-  {name: 'Elena', age: 18},
-  {name: 'Viktor', age: 20}
-]
-console.log (objArr)
+// var objArr = [
+//   {name: 'Max', age: 27},
+//   {name: 'Elena', age: 18},
+//   {name: 'Viktor', age: 20}
+// ]
+// console.log (objArr)
 
-var foundPerson = objArr.find(function(person) {
-  return person.age === 20
+// var foundPerson = objArr.find(function(person) {
+//   return person.age === 20
+// })
+
+// console.log(foundPerson)
+
+// var oddArray = [1,2,3,4,5,6,7,8,9].filter(function(i){
+//   return i % 2 !==0
+// })
+
+// console.log(oddArray)
+
+// var numArray = array.map(function(i) {
+//   return i * 2
+// })
+// console.log(numArray)
+
+// var person = {
+//   name: 'Max',
+//   age: 26,
+//   car: {
+//     model: 'ford'
+//   },
+//   job: 'FrontEnd',
+//   friends: ['Helena', 'Igor']
+// }
+//  var str = JSON.stringify(person)
+// console.log(str)
+
+// console.log (JSON.parse(str))
+
+// Таймштамп это текущее время в миллисекундах от 1 января 1970 года
+// var date = new Date()
+// console.log (date)
+
+// localStorage
+
+document.querySelector('button').addEventListener('click', function(event){
+
+  var value = document.querySelector('input').value
+
+  var obj = {
+    text: value
+  }
+  localStorage.setItem('header text', JSON.stringify(obj))
 })
 
-console.log(foundPerson)
+document.addEventListener('DOMContentLoaded', function(){
+  
+  var obj 
+  try {
+  JSON.parse(localStorage.getItem ('header text'))
+}
+catch (e) {
+  obj = {}
+}
+  
 
-var oddArray = [1,2,3,4,5,6,7,8,9].filter(function(i){
-  return i % 2 !==0
+  if (obj && obj.text && obj.text.trim()) {
+    document.querySelector('h1').textContent=(obj.text)
+  }
 })
-
-console.log(oddArray)
-
-var numArray = array.map(function(i) {
-  return i * 2
-})
-console.log(numArray)
