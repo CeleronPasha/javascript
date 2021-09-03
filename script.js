@@ -426,28 +426,247 @@ var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 // localStorage
 
-document.querySelector('button').addEventListener('click', function(event){
+// document.querySelector('button').addEventListener('click', function(event){
 
-  var value = document.querySelector('input').value
+//   var value = document.querySelector('input').value
 
-  var obj = {
-    text: value
-  }
-  localStorage.setItem('header text', JSON.stringify(obj))
-})
+//   var obj = {
+//     text: value
+//   }
+//   localStorage.setItem('header text', JSON.stringify(obj))
+// })
 
-document.addEventListener('DOMContentLoaded', function(){
+// document.addEventListener('DOMContentLoaded', function(){
   
-  var obj 
-  try {
-  JSON.parse(localStorage.getItem ('header text'))
-}
-catch (e) {
-  obj = {}
-}
+//   var obj 
+//   try {
+//   JSON.parse(localStorage.getItem ('header text'))
+// }
+// catch (e) {
+//   obj = {}
+// }
   
 
-  if (obj && obj.text && obj.text.trim()) {
-    document.querySelector('h1').textContent=(obj.text)
-  }
-})
+//   if (obj && obj.text && obj.text.trim()) {
+//     document.querySelector('h1').textContent=(obj.text)
+//   }
+// })
+
+//Обьекты и функции
+
+// var car = {
+//   name: 'Ford',
+//   year: 2015,
+//   person : {
+
+//   }
+// }
+
+// // car.__proto__ => Object.prototypy
+// // [masiv] => array => Object
+// console.log(car)
+
+// function Car(name, year) {
+//  this.name = name
+//  this.year = year 
+// }
+
+// Car.prototype.getAge = function () {
+//   return new Date().getFullYear() - this.year
+// }
+
+// Car.prototype.color = 'black'
+
+// var ford = new Car('Ford', 2015)
+// var bmw = new Car('BMW', 2017)
+// ford.color = 'red'
+// console.log(ford)
+// console.log(bmw)
+
+// var ford = Object.create({
+//   calculateDistancePerYear: function() {
+//     Object.defineProperty(this, 'distancePerYear', {
+//       value: Math.ceil(this.distance / this.age),
+//       enumerable: false,
+//       writable: false,
+//       configurable: false
+//     })
+//   }
+// }, {
+//   name: {value: 'Ford',
+//          enumerable: true,
+//          writable: false,
+//          configurable: false
+// },
+//   model: {value: 'Focus',
+//           enumerable: true,
+//           writable: false,
+//           configurable: false
+// },
+//   year: {value: 2015,
+//          enumerable: true,
+//          writable: false,
+//          configurable: false
+//   },
+//   distance: {value: 120500,
+//              enumerable: true,
+//              writable: true,
+//              configurable: false
+//   },
+//   age: {
+//     enumerable: true,
+//     get: function() {
+//       console.log('Получаем Возраст')
+//       return new Date().getFullYear() - this.year
+//     },
+//     set: function(){
+//       console.log('Устанавливаем значение')
+//     }
+//   }
+// } )
+
+// ford.calculateDistancePerYear()
+
+// for (var key in ford) {
+//   if(ford.hasOwnProperty(key)) {
+//     console.log(key, ford[key])
+//   }
+
+// }
+
+var person = {
+  name: 'Max',
+  age: 28,
+  job: 'FrontEnd'
+}
+
+// for (var key in person) {
+//   if(person.hasOwnProperty(key))
+//   console.log(person[key])
+// }
+
+// Object.keys(person).forEach(function(key) {
+//   console.log(person[key
+//   ])
+
+// Замыкания
+
+// var createCounter = function(counterName) {
+//   var counter = 0
+//   return{
+//     increment: function() {
+//       counter++
+//     },
+//     decrement: function() {
+//       counter--
+//     },
+//     getCounter: function() {
+//       return counter
+//     }
+//   }
+// }
+
+// var counterA = createCounter('Counter A')
+// var counterB = createCounter('Counter B')
+
+// counterA.increment()
+// counterA.increment()
+// counterA.increment()
+
+// counterB.decrement()
+// counterB.decrement()
+
+// Контекст 
+
+// var person = {
+//   age: 28,
+//   name: 'Max',
+//   job: 'Frontend',
+//   displayInfo: function(ms) {
+    
+
+//     setTimeout(function() {
+//       console.log('Name:', this.name)
+//       console.log('Name:', this.job)
+//       console.log('age:', this.age)
+//     }.bind(this), ms)
+//   }
+// }
+
+// person.displayInfo(5000)
+
+// привязка контекста
+
+// function printObject(objName) {
+//   console.log('Printing object:', objName)
+//  for (var key in this) {
+//    if (this.hasOwnProperty(key)) {
+//       console.log('[' + key + ']', this[key])
+//    }
+//  }
+// }
+
+
+
+// var person = {
+//   firstName: 'Max',
+//   job: 'Backend',
+//   age: 29,
+//   friends: ['Elena', 'Igor']
+// }
+
+// var car = {
+//   name: 'Ford',
+//   model: 'Focus',
+//   year: 2017
+// }
+
+
+// var printPerson = printObject.bind(person)
+// printPerson('Person') // 1i method вызыввает и возвращает функцию обьект и тд
+
+// printObject.call(car, 'Car') // 2i method сразу вызывает и сразу показывает функцию обьект и тд
+
+// printObject.apply(person, ['Person']) //3i method сразу вызывает с конечным рядом параметров
+
+// ЗАДАЧА 
+//  Реализуйте возможность используя прототип, чтобы у каждого массива был новый метод,
+//  позволяющий удваивать значение каждого элемента с учетом типа данных таким образом, чтобы:
+//  1. Для чисел это возведение в квадрат
+//  2. для строк это удваивание строки
+//  3. Метод не изменял существующий массив и возвращал новый
+
+//  пример:
+//  [1, 2, 3] => [1, 4, ,9]
+//  [5, 'Hello', 6] => [25, 'HelloHello', 36]\
+
+// var a = [1, 2, 3]
+// var b = [5, 'Hello', 6]
+
+// Array.prototype.double = function() {
+//   var newArray = this.map(function(item) {
+//     if (typeof item === 'number') {
+//       return Math.pow(item, 2)
+//     }
+
+//     if (typeof item === 'string') {
+//       return item += item
+//     }
+//   })
+
+//   return newArray
+// }
+
+
+// var newA = a.double()
+// var newB = b.double()
+
+// console.log('A', newA)
+// console.log('B', newB)
+
+//// ECMA-SCRIPT-6 /////
+
+// переменный let i const
+
+let // позволяет создавать переменные с возможностью менять значения
+const // позволяет создавать переменную без возможности менять значение
